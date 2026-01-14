@@ -2,9 +2,11 @@
 
 #include "sdk.h"
 
-#include <iostream>
+//#include <iostream>
 
-void __fastcall hkfb__WeaponFiring__update(fb::WeaponFiring* _this, void* edx, void* context)
+tfb__WeaponFiring__update ofb__WeaponFiring__update;
+
+void __thiscall hkfb__WeaponFiring__update(fb::WeaponFiring* _this, void* context)
 {
 	ofb__WeaponFiring__update(_this, context);
 	fb::GunSway* p_GunSway = _this->m_weaponSway;
@@ -15,7 +17,7 @@ void __fastcall hkfb__WeaponFiring__update(fb::WeaponFiring* _this, void* edx, v
 		{
 			p_GunSway->m_dispersionAngle = p_GunSway->m_minDispersionAngle;
 
-			printf("patched angle\n");
+			//printf("patched angle\n");
 		}
 	}
 
@@ -23,16 +25,16 @@ void __fastcall hkfb__WeaponFiring__update(fb::WeaponFiring* _this, void* edx, v
 	{
 		p_GunSway->m_isFiring = false;
 
-		printf("patched firing\n");
+		//printf("patched firing\n");
 	}
 }
 
-void* __fastcall hkfb__getRecoil(fb::GunSway* _this, void*, unsigned int a2, int a3)
-{
-	if (_this->m_dispersionAngle < _this->m_minDispersionAngle)
-	{
-		_this->m_dispersionAngle = _this->m_minDispersionAngle;
-	}
-
-	return ofb__getRecoil(_this, a2, a3);
-}
+//void* __fastcall hkfb__getRecoil(fb::GunSway* _this, void*, unsigned int a2, int a3)
+//{
+//	if (_this->m_dispersionAngle < _this->m_minDispersionAngle)
+//	{
+//		_this->m_dispersionAngle = _this->m_minDispersionAngle;
+//	}
+//
+//	return ofb__getRecoil(_this, a2, a3);
+//}
